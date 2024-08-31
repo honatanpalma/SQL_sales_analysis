@@ -28,28 +28,59 @@ This query identifies the top 5 best-selling products based on the total quantit
 ## 3. Sales Trend Over Time (Monthly)
 This query analyzes the sales trend over time, aggregating total sales by month. It helps visualize sales patterns, seasonality, and overall business growth.
 
-      SELECT 
-          strftime('%Y-%m', o.order_date) AS month_year,
-          SUM(oi.quantity * oi.list_price * (1 - oi.discount)) AS total_sales
-      FROM orders o
-      JOIN order_items oi ON o.order_id = oi.order_id
-      GROUP BY month_year
-      ORDER BY month_year;
+      SELECT
+        TO_CHAR(o.order_date, 'YYYY-MM') AS month_year,
+        SUM(oi.quantity * oi.list_price * (1 - oi.discount)) AS total_sales
+      FROM
+        orders o
+        JOIN order_items oi ON o.order_id = oi.order_id
+      GROUP BY
+        month_year
+      ORDER BY
+        month_year;
 
 
 ## 4. Customer Segmentation by Purchase Frequency
 This query segments customers into 'High', 'Medium', and 'Low' frequency groups based on the number of orders they have placed. It helps understand customer behavior and tailor marketing strategies.
 
-      SELECT 
-          customer_id, 
-          COUNT(*) AS order_count,
-          CASE 
-              WHEN COUNT(*) > (SELECT AVG(order_count) + STDDEV(order_count) FROM (SELECT customer_id, COUNT(*) AS order_count FROM orders GROUP BY customer_id)) THEN 'High'
-              WHEN COUNT(*) < (SELECT AVG(order_count) - STDDEV(order_count) FROM (SELECT customer_id, COUNT(*) AS order_count FROM orders GROUP BY customer_id)) THEN 'Low'
-              ELSE 'Medium'
-          END AS purchase_frequency_segment
-      FROM orders
-      GROUP BY customer_id;
+      SELECT
+        customer_id,
+        COUNT(*) AS order_count,
+        CASE
+          WHEN COUNT(*) > (
+            SELECT
+              AVG(order_count) + STDDEV(order_count)
+            FROM
+              (
+                SELECT
+                  customer_id,
+                  COUNT(*) AS order_count
+                FROM
+                  orders
+                GROUP BY
+                  customer_id
+              ) AS subquery1
+          ) THEN 'High'
+          WHEN COUNT(*) < (
+            SELECT
+              AVG(order_count) - STDDEV(order_count)
+            FROM
+              (
+                SELECT
+                  customer_id,
+                  COUNT(*) AS order_count
+                FROM
+                  orders
+                GROUP BY
+                  customer_id
+              ) AS subquery2
+          ) THEN 'Low'
+          ELSE 'Medium'
+        END AS purchase_frequency_segment
+      FROM
+        orders
+      GROUP BY
+        customer_id;
  
 
 ## 5. Average Order Value
