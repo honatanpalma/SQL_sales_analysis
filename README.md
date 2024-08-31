@@ -31,6 +31,13 @@ The provided SQL scripts cover a range of common sales analysis scenarios, provi
 * **2. Execute the SQL queries:**
 * Run the provided scripts to explore and analyze the sales data.
 * Feel free to modify and adapt the queries to answer your own business questions.
+* Alternatively, you can establish a connection to this example database supabase client libraries:
+
+    Project URL: https://rjyqwfjvlxrpibxyqscc.supabase.co
+    
+    API Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqeXF3Zmp2bHhycGlieHlxc2NjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjUwNjQ0NzEsImV4cCI6MjA0MDY0MDQ3MX0.MDH3XU2E0UaIE-A0YyWR9vUsGCtCueIIA0gT24crI5U
+  
+  
   
 
 ![image](https://github.com/user-attachments/assets/eb690a7b-2d1e-4cbb-b582-f9b1fd712a39)
