@@ -1,7 +1,7 @@
 ## Inventory and Sales Analysis
 
 ### Sales Data Exploration with SQL
-This repository showcases fundamental SQL queries for analyzing and exploring sales data within a relational database. The dataset used is the sample database provided by SQL Server Tutorial (https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip), offering a practical context for demonstrating core SQL concepts.
+This repository showcases fundamental SQL queries for analyzing and exploring sales data. The dataset used is the sample database provided by SQL Server Tutorial (https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-Sample-Database.zip), offering a practical context for demonstrating core SQL concepts.
 
 ### Analysis Overview
 The provided SQL scripts cover a range of common sales analysis scenarios, providing a basic foundation for understanding key metrics and trends.
